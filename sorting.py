@@ -121,3 +121,7 @@ def bad_sort(numList):
             i = i+1
 
 test_sort()
+time_test(insertion_sort, 10000)
+time_test(insertion_sort, 20000)
+time_test(bubble_sort, 500)
+time_test(bubble_sort, 1000)
