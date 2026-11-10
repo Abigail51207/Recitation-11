@@ -14,9 +14,8 @@ def selection_sort(numList):
         minpos = pos
         for seek in range(pos,size):    # find smallest in range
         	# -- YOUR CODE STARTS HERE
-            pass   # temporary placeholder
-
-
+            if numList[seek] < numList[minpos]:
+                minpos = seek
             # -- YOUR CODE ENDS HERE
 
 
@@ -28,10 +27,10 @@ def insertion_sort(numList):
     for pos in range(1,size):
         value = numList[pos]              # insert this value into sorted data
         # -- YOUR CODE STARTS HERE
-
-
-
-
+        i = pos - 1
+        while i >= 0 and numList[i] > value:
+            numList[i + 1] = numList[i]
+            i -= 1
         # -- YOUR CODE ENDS HERE
         numList[pos] = value
 
