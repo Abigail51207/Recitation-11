@@ -17,7 +17,7 @@ def selection_sort(numList):
             if numList[seek] < numList[minpos]:
                 minpos = seek
             # -- YOUR CODE ENDS HERE
-
+        
 
         numList[minpos],numList[pos] = numList[pos],numList[minpos]
 
@@ -31,6 +31,7 @@ def insertion_sort(numList):
         while i >= 0 and numList[i] > value:
             numList[i + 1] = numList[i]
             i -= 1
+        numList[i + 1] = value
         # -- YOUR CODE ENDS HERE
         numList[pos] = value
 
@@ -44,13 +45,25 @@ def bubble_sort(numList):
         sorted = True                   # assume it is sorted this time
         for pos in range(1,size):
             if numList[pos] < numList[pos-1]:
-                pass  # temporary polaceholder
                 # -- YOUR CODE STARTS HERE
-
-
+                numList[pos], numList[pos - 1] = numList[pos - 1], numList[pos]
+                sorted = False
         		# -- YOUR CODE ENDS HERE
 
-
+def bubble_sort_2(numList):
+    """Bubble Sort: exchange any adjacent values that are out of order"""
+    size = len(numList)
+    end = size
+    sorted = False                      # expect to check at least once
+    while not sorted:
+        sorted = True
+        last_swap = 0                   # assume it is sorted this time
+        for pos in range(1, end):
+            if numList[pos] < numList[pos-1]:
+                numList[pos], numList[pos - 1] = numList[pos - 1], numList[pos]
+                sorted = False
+                last_swap = pos
+            end = last_swap
 
 
 # Functions to test the results quickly
@@ -78,6 +91,10 @@ def test_sort():
     bubble_sort(arr)
     print(f'arr after Bubble sort: {arr}')
 
+    arr = [1,3,5,7,9,8,6,4,2,0]
+    bubble_sort_2(arr)
+    print(f'arr after Bubble sort 2: {arr}')
+
 
 def time_test(sort,size=0):
     """Time these sorts for a given array size"""
@@ -102,3 +119,5 @@ def bad_sort(numList):
             i = 1
         else:
             i = i+1
+
+test_sort()
